@@ -33,9 +33,10 @@ class ProductController extends Controller
 	public function validate_data_product(Request $request)
 	{
 		$rules =[
-			'name' => 'required',
-			'description' => 'required',
-			'price' => 'required|numeric',
+			'judul' => 'required',
+			'pengarang' => 'required',
+			'penulis' => 'required',
+			'stock' => 'required|numeric',
 		];
 		$validator = Validator::make($request->all(), $rules);
         if($validator->fails()){

@@ -19,6 +19,10 @@ class UserController extends Controller
 		$this->service = $service;
 	}
 
+    public function tampil_home()
+    {
+        return view('home');
+    }
     public function tampil_view()
     {
         $users = $this->users->getAll();

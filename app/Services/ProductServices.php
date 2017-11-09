@@ -2,14 +2,14 @@
 	
 namespace App\Services;
 
-use App\Models\Products;
+use App\Models\Books;
 
 class ProductServices
 {
 	public function add_product($request)
 	{
-		$products = Products::create($request->all());
-		$products->save();
+		$books = Books::create($request->all());
+		$books->save();
 	}
 }
 ?>

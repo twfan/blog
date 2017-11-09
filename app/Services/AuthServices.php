@@ -3,6 +3,7 @@ namespace App\Services;
 
 use Validator, Auth;
 use App\Models\Users;
+use App\Models\Permission;
 
 /**
 * 
@@ -22,6 +23,9 @@ class AuthServices
 		$member = Users::create($request->all());
 		$member->password = bcrypt($request->password);
 		$member->save();
+		$permission = Permission::create([
+			'user_id' => $member->id,
+		]);
 	}
 }
 

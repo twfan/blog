@@ -10,14 +10,17 @@ $(document.ready(function(){
 </head>
 <body>
 
-	<form method="POST" action="{{url('proses_products')}}">
+	<form method="POST" action="{{url('proses_daftar_buku')}}">
     {{ csrf_field() }}
     	<input type="hidden" name="id" value="">
-		nama produk<input type="text" name="name" value=""><br>
-		deskripsi produk<input type="description" name="description" value=""><br>
-		harga<input type="number" name="price" value=""><br>
-		<input type="submit" value="Add Products"><br>
-	</form>	
+		judul buku<input type="text" name="judul" value=""><br>
+		pengarang buku<input type="text" name="pengarang" value=""><br>
+		penulis buku<input type="text" name="penulis" value=""><br>
+		Stock<input type="number" name="stock" value="" min="0" max="500"><br>
+		<input type="submit" value="Daftar Buku">
+	</form>
+	<a href="{{url('home')}}"><input type="submit" value="Back to menu"></a><br>
+
 	@if (session('status'))
         {{ session('status') }}
 	@endif

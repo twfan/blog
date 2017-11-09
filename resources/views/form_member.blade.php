@@ -17,7 +17,7 @@ $(document.ready(function(){
     	<input type="hidden" name="id" value="{{ !empty($member->id) ? $member->id : '' }}">
 		nama<input type="text" name="name" value="{{ !empty($member->name) ? $member->name : '' }}"><br>
 		email<input type="text" name="email" value="{{ !empty($member->email) ? $member->email : '' }}"><br>
-		password<input type="text" name="password" value="{{ !empty($member->password) ? $member->password : '' }}"><br>
+		password<input type="text" name="password" value=""><br>
 		<input type="submit" value="add"><br>
 	</form>
 	<table>
@@ -42,10 +42,7 @@ $(document.ready(function(){
 				@endforeach
 			@endif
 		</tbody>
-	</table>
-	<form method="POST" action="{{ url('log_out')}}">
-		{{csrf_field()}}
-		<input type="submit" value="Log Out"><br>
-	</form>
+	</table><br><br>
+	<a href="{{ url('home')}}"><input type="submit" value="Back to home"></a><br>
 </body>
 </html>

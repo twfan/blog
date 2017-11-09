@@ -81,8 +81,7 @@ class AuthController extends Controller
         if($validator=='valid'){
             $login = $this->service->login($request);
             $data_user = $this->repository->getByEmail($request);
-            dd($data_user->id);
-            return redirect()->route('products');
+            return redirect()->route('view_home');
         }else
         {
             return redirect('login')->with('status', 'gagal login!');

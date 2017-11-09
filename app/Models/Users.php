@@ -10,10 +10,11 @@ class Users extends Model{
 	protected $table = 'users';
     protected $fillable = ['name', 'email','password', 'remember_token'];
 
-    public function products()
+    public function permission()
     {
-    	return $this->hasMany('App\Models\Products', 'user_id');
+    	return $this->hasOne('App\Models\Permission','user_id');
     }
+
 }
 
 

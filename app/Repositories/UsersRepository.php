@@ -23,7 +23,7 @@ class UsersRepository extends EloquentRepository
 		$users = Users::find($request->id);
 		$users->name = $request->name;
 		$users->email = $request->email;
-		$users->password = $request->password;
+		$users->password = bcrypt($request->password);
 		$users->save();
 	}
 
