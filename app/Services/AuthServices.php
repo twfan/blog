@@ -3,7 +3,7 @@ namespace App\Services;
 
 use Validator, Auth;
 use App\Models\Users;
-use App\Models\Permission;
+use App\Models\Permission_users;
 
 /**
 * 
@@ -20,12 +20,23 @@ class AuthServices
 
 	public function add_member($request)
 	{
+		
 		$member = Users::create($request->all());
 		$member->password = bcrypt($request->password);
-		$member->save();
-		$permission = Permission::create([
-			'user_id' => $member->id,
-		]);
+		$member->permission_id = $request->permission;
+		$member->remember_token = $request->_token;
+		if($member->save())
+		{
+			$permission = Permission_users::create([
+				'user_id' => $member->id,
+				'permission_id' => $member->permission_id,
+			]);	
+			return "berhasil";
+		}else
+		{
+			return "gagal";
+		}
+		
 	}
 }
 

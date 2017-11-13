@@ -14,7 +14,7 @@ class AddPermissionIdToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('permission_id')->unsigned()->after('remember_token');
+            $table->integer('permission_id')->default()->unsigned()->after('remember_token');
         });
     }
 

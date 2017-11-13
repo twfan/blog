@@ -9,9 +9,10 @@ class Permission extends Model{
 
 	protected $table = 'permission';
     
-    public function user()
+    
+    public function permission_user()
     {
-    	return $this->belongsTo('App\Models\Users');
+    	return $this->hasMany('App\Models\Permission');
     }
 
 }

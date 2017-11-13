@@ -41,6 +41,7 @@ class AuthController extends Controller
             'name'      => 'required',
             'email'     => 'required|email|unique:users,email',
             'password'  => 'required',
+            'permission'  => 'required',
         ];
         $validator = Validator::make($request->all(), $rules);
         if($validator->fails()){
@@ -54,11 +55,18 @@ class AuthController extends Controller
         $validator = $this->validate_register($request);
         if($validator=='valid')
         {
-            $this->service->add_member($request);
-            return redirect('register')->with('status', 'berhasil daftar!');
+            
+            if($this->service->add_member($request)=="berhasil")
+            {
+                return redirect('register')->with('status', 'berhasil daftar!');
+            }else
+            {
+                return redirect('register')->with('status', 'gagal daftar!');
+            }
+            
         }else
         {
-            return redirect('register')->with('status', 'gagal daftar!');
+            return redirect('register')->with('status', 'inputan user tidak sesuai!');
         }
        
     }
